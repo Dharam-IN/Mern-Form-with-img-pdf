@@ -9,7 +9,7 @@ const DataSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    email: {
+    eMail: {
         type: String,
         required: true
     },
