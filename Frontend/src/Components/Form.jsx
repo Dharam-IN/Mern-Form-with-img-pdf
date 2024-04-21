@@ -11,8 +11,17 @@ const Form = () => {
         lastName: "",
         eMail: "",
         dataofBirth: "",
-        
+        residentialAddress: {
+            street1: "",
+            street2: ""
+        },
+        permanentAddress: {
+            street1: "",
+            street2: ""
+        },
+        document: []
     })
+    console.log(Data);
 
     const [file1, setFile1] = useState(null);
 
@@ -29,30 +38,30 @@ const Form = () => {
                     <div className="flex justify-between flex-wrap w-full">
                         <div className='md:w-[48%] w-full mb-4'>
                             <label className='text-[17px] font-medium' htmlFor="firstName">First Name <span className="text-red-500">*</span></label>
-                            <input type="text" id='firstName' placeholder='Enter Your First Name here...' className="w-full border border-gray-300 rounded-md px-3 py-2 mt-1"/>
+                            <input type="text" id='firstName' value={Data.firstName} placeholder='Enter Your First Name here...' className="w-full border border-gray-300 rounded-md px-3 py-2 mt-1"/>
                         </div>
                         <div className='md:w-[48%] w-full mb-4'>
                             <label className='text-[17px] font-medium' htmlFor="lastName">Last Name <span className="text-red-500">*</span></label>
-                            <input type="text" id='lastName' placeholder='Enter Your Last Name here...' className="w-full border border-gray-300 rounded-md px-3 py-2 mt-1"/>
+                            <input type="text" id='lastName' value={Data.lastName} placeholder='Enter Your Last Name here...' className="w-full border border-gray-300 rounded-md px-3 py-2 mt-1"/>
                         </div>
                         <div className='md:w-[48%] w-full mb-4'>
                             <label className='text-[17px] font-medium' htmlFor="email">E-Mail <span className="text-red-500">*</span></label>
-                            <input type="email" id='email' placeholder='Enter Your E-Mail here...' className="w-full border border-gray-300 rounded-md px-3 py-2 mt-1"/>
+                            <input type="email" id='email' value={Data.eMail} placeholder='Enter Your E-Mail here...' className="w-full border border-gray-300 rounded-md px-3 py-2 mt-1"/>
                         </div>
                         <div className='md:w-[48%] w-full mb-4'>
                             <label className='text-[17px] font-medium' htmlFor="dob">Date of Birth <span className="text-red-500">*</span></label>
-                            <input type="date" id='dob' className="w-full border border-gray-300 rounded-md px-3 py-2 mt-1"/>
+                            <input type="date" id='dob' value={Data.dataofBirth} className="w-full border border-gray-300 rounded-md px-3 py-2 mt-1"/>
                         </div>
                         <div className='w-full'>
                             <h5 className='text-[17px] font-medium'>Residential Address</h5>
                             <div className='w-full flex flex-wrap justify-between mb-4'>
                                 <div className='md:w-[48%] w-full mb-4'>
                                     <label className='text-[15px] font-normal text-gray-500' htmlFor="residentialAddress1">street 1 <span className="text-red-500">*</span></label>
-                                    <input type="text" id='residentialAddress1' placeholder='Enter Your Residential Address street 1 here...' className="w-full border border-gray-300 rounded-md px-3 py-2 mt-1"/>
+                                    <input type="text" value={Data.residentialAddress.street1} id='residentialAddress1' placeholder='Enter Your Residential Address street 1 here...' className="w-full border border-gray-300 rounded-md px-3 py-2 mt-1"/>
                                 </div>
                                 <div className='md:w-[48%] w-full mb-4'>
                                     <label className='text-[15px] font-normal text-gray-500' htmlFor="residentialAddress2">street 2 <span className="text-red-500">*</span></label>
-                                    <input type="text" id='residentialAddress2' placeholder='Enter Your Residential Address street 2 here...' className="w-full border border-gray-300 rounded-md px-3 py-2 mt-1"/>
+                                    <input type="text" id='residentialAddress2' value={Data.residentialAddress.street2} placeholder='Enter Your Residential Address street 2 here...' className="w-full border border-gray-300 rounded-md px-3 py-2 mt-1"/>
                                 </div>
                             </div>
                         </div>
@@ -65,11 +74,11 @@ const Form = () => {
                             <div className='w-full flex flex-wrap justify-between mb-4'>
                                 <div className='md:w-[48%] w-full mb-4'>
                                     <label className='text-[15px] font-normal text-gray-500' htmlFor="permanentAddress1">street 1</label>
-                                    <input type="text" id='permanentAddress1' placeholder='Enter Your Permanent Address street 1 here...' className="w-full border border-gray-300 rounded-md px-3 py-2 mt-1"/>
+                                    <input type="text" id='permanentAddress1' value={Data.permanentAddress.street1} placeholder='Enter Your Permanent Address street 1 here...' className="w-full border border-gray-300 rounded-md px-3 py-2 mt-1"/>
                                 </div>
                                 <div className='md:w-[48%] w-full mb-4'>
                                     <label className='text-[15px] font-normal text-gray-500' htmlFor="permanentAddress2">street 2</label>
-                                    <input type="text" id='permanentAddress2' placeholder='Enter Your Permanent Address street 2 here...' className="w-full border border-gray-300 rounded-md px-3 py-2 mt-1"/>
+                                    <input type="text" id='permanentAddress2' value={Data.permanentAddress.street2} placeholder='Enter Your Permanent Address street 2 here...' className="w-full border border-gray-300 rounded-md px-3 py-2 mt-1"/>
                                 </div>
                             </div>
                         </div>
@@ -92,8 +101,6 @@ const Form = () => {
                                 </div>
                                 <div className='md:w-[27%] w-full mb-4'>
                                     <label className='text-[17px] font-medium' htmlFor="document1">Upload Document <span className="text-red-500">*</span></label>
-                                    {/* <input type="file" id="document1" className="w-full border border-gray-300 rounded-md px-3 py-2 mt-1"/>
-                                    <FiUpload /> */}
                                     <div className="cursor-pointer flex relative items-center justify-center w-full h-full border border-gray-300 rounded-md px-3 py-2 mt-1">
                                         <FiUpload className="w-6 h-6 mr-2" />
                                         {file1 ? (
