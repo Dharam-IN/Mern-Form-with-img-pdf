@@ -212,18 +212,19 @@ const Form = () => {
                                             <option value="pdf">PDF</option>
                                         </select>
                                     </div>
-                                    <div className='md:w-[27%] w-full'>
-                                        <label className='text-[17px] font-medium' htmlFor={`document-${index}`}>Upload Document <span className="text-red-500">*</span></label>
+                                    <div className="md:w-[27%] w-full">
+                                        <label className='text-[17px] font-medium' htmlFor="postimage">Post Image <span className="text-red-500">*</span></label>
                                         <div className="cursor-pointer flex relative items-center justify-center w-full h-full border border-gray-300 rounded-md px-3 py-2 mt-1">
                                             <FiUpload className="w-6 h-6 mr-2" />
-                                            {file ? (
-                                                <span>{file.name}</span>
+                                            {files[0] ? (
+                                                <span>{files[0].name}</span>
                                             ) : (
                                                 <span>Choose File</span>
                                             )}
-                                            <input type="file" id={`document-${index}`} className="opacity-0 absolute inset-0 w-full h-full" onChange={(event) => handleFileChange(event, index)} />
+                                            <input type="file" id="postimage" name="postimage" className="opacity-0 absolute inset-0 w-full h-full" onChange={(event) => handleFileChange(event, 0)} />
                                         </div>
                                     </div>
+
                                     <div className='md:w-[10%] w-full'>
                                         <button className='bg-red-500 cursor-pointer text-white text-2xl w-[50px] flex justify-center items-center h-[50px]' type='button' onClick={() => removeFileRow(index)}><MdDelete /></button>
                                     </div>

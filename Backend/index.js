@@ -3,8 +3,10 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { DBConnect } from './DB/database.js';
 import DataRouter from './Routes/DataRouter.js';
+import { fileURLToPath } from 'url';
 import multer from 'multer';
 const upload = multer();
+import path from 'path';
 
 
 
@@ -14,14 +16,23 @@ const app = express();
 dotenv.config()
 
 
-// Middleware to parse `multipart/form-data`
-app.use(upload.none());
+// app.use(upload.none());
 
-app.post('/data', (req, res) => {
-    console.log(req.body); // This will now contain the parsed form data
+
+// check data
+app.post('/data', upload.fields([{ name: 'postimage', maxCount: 1 }]), (req, res) => {
+    console.log(req.body);
+    console.log(req.file);
     res.send('Received your data!');
-  });
+});
+
   
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+
 // Cors
 const corsOptions = {
     origin: "http://localhost:5173",

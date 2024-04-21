@@ -9,6 +9,9 @@ const DataSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    postimage: {
+        type: String
+    },
     eMail: {
         type: String,
         required: true
